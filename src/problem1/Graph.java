@@ -49,4 +49,6 @@ public abstract class Graph {
 
     public abstract void removeEdge(int v, int w);
 
+    public abstract int getDegree(int v);
+
 }

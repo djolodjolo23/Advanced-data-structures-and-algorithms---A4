@@ -22,6 +22,14 @@ public class DirectedGraph extends Graph{
     }
 
     @Override
+    public int getDegree(int v) {
+        if (v < al.size()) {
+            return al.get(v).size();
+        }
+        return 0;
+    }
+
+    @Override
     public void addEdge(int v, int w) {
         if (v < al.size() && w < al.size()) {
             al.get(v).add(new Edge(w, 1));

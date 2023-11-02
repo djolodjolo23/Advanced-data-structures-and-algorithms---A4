@@ -22,6 +22,14 @@ public class UndirectedGraph extends Graph{
         }
     }
 
+    @Override
+    public int getDegree(int v) {
+        if (v < al.size()) {
+            return al.get(v).size();
+        }
+        return 0;
+    }
+
 
     @Override
     public void addEdge(int from, int to) {
@@ -30,4 +38,6 @@ public class UndirectedGraph extends Graph{
             al.get(to).add(new Edge(from, 1));
         }
     }
+
+
 }
