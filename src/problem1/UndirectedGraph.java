@@ -14,6 +14,14 @@ public class UndirectedGraph extends Graph{
         }
     }
 
+    @Override
+    public void removeEdge(int from, int to) {
+        if (from < al.size() && to < al.size()) {
+            al.get(from).removeIf(e -> e.targetVertex == to);
+            al.get(to).removeIf(e -> e.targetVertex == from);
+        }
+    }
+
 
     @Override
     public void addEdge(int from, int to) {

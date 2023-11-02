@@ -47,4 +47,6 @@ public abstract class Graph {
 
     public abstract void addWeightedEdge(int v, int w, int weight);
 
+    public abstract void removeEdge(int v, int w);
+
 }

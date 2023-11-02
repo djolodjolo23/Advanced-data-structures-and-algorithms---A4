@@ -11,8 +11,11 @@ public class Main {
         ug.addEdge(0, 1);
         ug.addEdge(0, 2);
 
+        ug.removeEdge(0, 1);
+
         dg.addEdge(0, 1);
         dg.addEdge(0, 2);
+        dg.removeEdge(0, 1);
 
         System.out.println("Edge count: " + ug.getEdgesCount());
 
