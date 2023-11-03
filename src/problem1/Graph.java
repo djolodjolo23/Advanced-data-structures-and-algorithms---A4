@@ -1,17 +1,18 @@
 package problem1;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class Graph {
 
-    List<List<Edge>> al;
+    List<Vertex> al;
 
 
     public Graph(int numVertices) {
         al = new ArrayList<>();
-        for (int i = 0; i < numVertices; i++) {
-            al.add(new ArrayList<>());
+        for (int i = 1; i <= numVertices; i++) {
+            al.add(new Vertex(i));
         }
     }
 
@@ -21,8 +22,8 @@ public abstract class Graph {
 
     public int getEdgesCount() {
         int count = 0;
-        for (List<Edge> l : al) {
-            count += l.size();
+        for (Vertex vertex : al) {
+            count += vertex.edges.size();
         }
         if (this instanceof UndirectedGraph) {
             return count / 2;
@@ -32,6 +33,18 @@ public abstract class Graph {
             throw new IllegalStateException("Graph is neither directed nor undirected");
         }
     }
+
+
+    static class Vertex {
+        int vertex;
+        LinkedList<Edge> edges;
+
+        Vertex(int vertex) {
+            this.vertex = vertex;
+            edges = new LinkedList<>();
+        }
+    }
+
 
     static class Edge {
         int targetVertex;
