@@ -4,10 +4,9 @@ import java.util.Iterator;
 
 public class MyLinkedList<AnyType> implements Iterable<AnyType>{
 
-
     @Override
     public Iterator<AnyType> iterator() {
-        return new IteratorEdgesInternal<>(this);
+        return new IteratorAdjacencyList<>(this);
     }
 
     static class Node<AnyType> {

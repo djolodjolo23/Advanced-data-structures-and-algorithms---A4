@@ -1,8 +1,5 @@
 package problem1;
 
-import java.util.Iterator;
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -22,13 +19,14 @@ public class Main {
 
        // I//teratorEdges<Graph.Edge> ie = new IteratorEdges<>(ug);
 
-        IteratorEdgesForPrinting<Graph.Edge> ie;
+        IteratorEdges ie;
 
 
 
         dg.addEdge(0, 1);
         dg.addEdge(0, 2);
         dg.addEdge(0, 3);
+        dg.addEdge(2, 0);
 
         /*
         for (Graph.Vertex v : dg.al) {
@@ -43,15 +41,17 @@ public class Main {
 
         Graph.Vertex v1 = dg.al.get(0);
 
-        ie = new IteratorEdgesForPrinting<>(v1.edges, v1, dg.getEdges(v1.vertex));
+        ie = new IteratorEdges(dg);
         while (ie.hasNext()) {
             System.out.println(ie.next().toString());
         }
 
 
         for (Graph.Edge e : v1.edges) {
-            System.out.println(e.targetVertex);
+            System.out.print(e.targetVertex + " ");
         }
+
+        System.out.println();
 
         System.out.println("Edge count: " + dg.getEdgesCount());
 

@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class IteratorVertex implements Iterator<Graph.Vertex> {
+public class IteratorVertices implements Iterator<Graph.Vertex> {
     private int index;
     private final List<Graph.Vertex> list;
 
-    public IteratorVertex(Graph graph) {
+    public IteratorVertices(Graph graph) {
         list = new ArrayList<>();
         list.addAll(graph.al);
         index = 0;

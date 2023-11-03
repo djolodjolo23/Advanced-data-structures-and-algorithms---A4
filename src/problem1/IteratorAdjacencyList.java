@@ -3,12 +3,12 @@ package problem1;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class IteratorEdgesInternal<AnyType> implements Iterator<AnyType>{
+public class IteratorAdjacencyList<AnyType> implements Iterator<AnyType>{
 
     private MyLinkedList<AnyType> linky;
     private MyLinkedList.Node<AnyType> currentNode;
 
-    public IteratorEdgesInternal(MyLinkedList<AnyType> myLinkedList) {
+    public IteratorAdjacencyList(MyLinkedList<AnyType> myLinkedList) {
         linky = myLinkedList;
         this.currentNode = linky.head.next;
     }
