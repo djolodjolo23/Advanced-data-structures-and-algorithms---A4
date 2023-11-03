@@ -2,7 +2,13 @@ package problem1;
 
 import java.util.Iterator;
 
-public class MyLinkedList<AnyType> implements Iterable<AnyType> {
+public class MyLinkedList<AnyType> implements Iterable<AnyType>{
+
+
+    @Override
+    public Iterator<AnyType> iterator() {
+        return new IteratorEdgesInternal<>(this);
+    }
 
     static class Node<AnyType> {
         public AnyType data;
@@ -14,6 +20,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
             this.prev = prev;
             this.next = next;
         }
+
     }
 
     private int theSize;
@@ -23,8 +30,8 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
     Node<AnyType> tail;
 
     public MyLinkedList() {
-        head = new Node<AnyType>(null, null, null);
-        tail = new Node<AnyType>(null, head, null);
+        head = new Node<>(null, null, null);
+        tail = new Node<>(null, head, null);
         head.next = tail;
     }
 
@@ -71,10 +78,4 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 
 
 
-
-
-    @Override
-    public Iterator<AnyType> iterator() {
-        return new IteratorEdges<>(this);
-    }
 }

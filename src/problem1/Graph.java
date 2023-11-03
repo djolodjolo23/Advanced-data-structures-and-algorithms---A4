@@ -9,7 +9,7 @@ public abstract class Graph {
 
     public Graph(int numVertices) {
         al = new ArrayList<>();
-        for (int i = 1; i <= numVertices; i++) {
+        for (int i = 0; i < numVertices; i++) {
             al.add(new Vertex(i));
         }
     }
@@ -32,6 +32,8 @@ public abstract class Graph {
         }
     }
 
+
+
     static class Edge {
         int targetVertex;
         int weight;
@@ -43,14 +45,26 @@ public abstract class Graph {
         }
     }
 
-    static class Vertex {
-        int vertex;
+    public static class Vertex {
+        Integer vertex;
         MyLinkedList<Edge> edges;
 
         Vertex(int vertex) {
             this.vertex = vertex;
             edges = new MyLinkedList<>();
         }
+
+    }
+
+    public List<Integer> getEdges(int v) {
+        List<java.lang.Integer> edges = new ArrayList<>();
+        Vertex vx = al.get(v);
+        if (vx.edges.size() != 0) {
+            for (Edge e : vx.edges) {
+                edges.add(e.targetVertex);
+            }
+        }
+        return edges;
     }
 
     public abstract void addEdge(int v, int w);

@@ -1,6 +1,5 @@
 package problem1;
 
-import java.util.List;
 
 public class DirectedGraph extends Graph{
     public DirectedGraph(int numVertices) {
@@ -16,18 +15,17 @@ public class DirectedGraph extends Graph{
 
     @Override
     public void removeEdge(int v, int w) {
-
-    }
-
-    /*
-    @Override
-    public void removeEdge(int from, int to) {
-        if (from < al.size() && to < al.size()) {
-            al.get(from).edges.remove(e -> e.targetVertex == to);
+        if (v < al.size() && w < al.size()) {
+            Vertex from = al.get(v);
+            for (Edge e : from.edges) {
+                if (e.targetVertex == w) {
+                    from.edges.remove(e);
+                    break;
+                }
+            }
         }
     }
 
-     */
 
     @Override
     public int getDegree(int v) {
