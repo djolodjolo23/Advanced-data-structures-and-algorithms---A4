@@ -49,6 +49,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
         modCount++;
     }
 
+
     public void addLast(AnyType x) {
         Node<AnyType> newNode = new Node<>(x, tail.prev, tail);
         tail.prev.next = newNode;
@@ -57,7 +58,6 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
         theSize++;
         modCount++;
     }
-
 
 
 
@@ -74,8 +74,5 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
             currentNode = currentNode.next;
         }
     }
-
-
-
 
 }

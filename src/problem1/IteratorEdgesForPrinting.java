@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 
 public class IteratorEdgesForPrinting<AnyType> implements Iterator<VertexPair> {
 
-    private MyLinkedList<AnyType> linky;
+    private final MyLinkedList<AnyType> linky;
 
-    private Graph.Vertex vertex;
+    private final Graph.Vertex vertex;
 
     private int counter = 0;
 
-    private List<Integer> edges;
+    private final List<Integer> edges;
     private MyLinkedList.Node<AnyType> currentNode;
 
     public IteratorEdgesForPrinting(MyLinkedList<AnyType> myLinkedList, Graph.Vertex vertex, List<Integer> edges) {
