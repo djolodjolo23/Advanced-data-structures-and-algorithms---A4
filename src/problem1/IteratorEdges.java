@@ -8,13 +8,8 @@ public class IteratorEdges<AnyType> implements Iterator<AnyType>{
     private MyLinkedList<AnyType> linky;
     private MyLinkedList.Node<AnyType> currentNode;
 
-    public IteratorEdges(Graph g) {
-        linky = new MyLinkedList<>();
-        for (Graph.Vertex v : g.al) {
-            for (Graph.Edge e : v.edges) {
-                linky.addLast((AnyType) e);
-            }
-        }
+    public IteratorEdges(MyLinkedList<AnyType> myLinkedList) {
+        linky = myLinkedList;
         this.currentNode = linky.head.next;
     }
 

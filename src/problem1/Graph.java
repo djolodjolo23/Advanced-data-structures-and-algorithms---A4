@@ -1,7 +1,6 @@
 package problem1;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public abstract class Graph {
@@ -40,6 +39,7 @@ public abstract class Graph {
         Edge(int targetVertex, int weight) {
             this.targetVertex = targetVertex;
             this.weight = weight;
+
         }
     }
 

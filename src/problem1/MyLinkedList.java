@@ -52,8 +52,29 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
     }
 
 
+
+
+    public void remove(AnyType x) {
+        Node<AnyType> currentNode = head.next;
+        while (currentNode != tail) {
+            if (currentNode.data.equals(x)) {
+                currentNode.prev.next = currentNode.next;
+                currentNode.next.prev = currentNode.prev;
+                theSize--;
+                modCount++;
+                return;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+
+
+
+
+
+
     @Override
     public Iterator<AnyType> iterator() {
-        return null;
+        return new IteratorEdges<>(this);
     }
 }

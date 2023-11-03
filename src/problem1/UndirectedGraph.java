@@ -15,6 +15,27 @@ public class UndirectedGraph extends Graph{
     }
 
     @Override
+    public void removeEdge(int v, int w) {
+        if (v < al.size() && w < al.size()) {
+            Vertex from = al.get(v);
+            Vertex to = al.get(w);
+            for (Edge e : from.edges) {
+                if (e.targetVertex == w) {
+                    from.edges.remove(e);
+                    break;
+                }
+            }
+            for (Edge e : to.edges) {
+                if (e.targetVertex == v) {
+                    to.edges.remove(e);
+                    break;
+                }
+            }
+        }
+    }
+
+    /*
+    @Override
     public void removeEdge(int from, int to) {
         IteratorEdges<Edge> it = new IteratorEdges<>(this);
         // find node with iterator
@@ -30,6 +51,8 @@ public class UndirectedGraph extends Graph{
         }
     }
 
+     */
+
     @Override
     public int getDegree(int v) {
         if (v < al.size()) {
@@ -42,8 +65,8 @@ public class UndirectedGraph extends Graph{
     @Override
     public void addEdge(int from, int to) {
         if (from < al.size() && to < al.size()) {
-            al.get(from).edges.add(new Edge(to, 1));
-            al.get(to).edges.add(new Edge(from, 1));
+            al.get(from).edges.addLast(new Edge(to, 1));
+            al.get(to).edges.addLast(new Edge(from, 1));
         }
     }
 

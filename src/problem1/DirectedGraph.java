@@ -15,11 +15,19 @@ public class DirectedGraph extends Graph{
     }
 
     @Override
+    public void removeEdge(int v, int w) {
+
+    }
+
+    /*
+    @Override
     public void removeEdge(int from, int to) {
         if (from < al.size() && to < al.size()) {
-            al.get(from).edges.removeIf(e -> e.targetVertex == to);
+            al.get(from).edges.remove(e -> e.targetVertex == to);
         }
     }
+
+     */
 
     @Override
     public int getDegree(int v) {
@@ -37,18 +45,5 @@ public class DirectedGraph extends Graph{
         }
     }
 
-    public int getInDegree(int v) {
-        if (v < al.size()) {
-            int count = 0;
-            for (Edge l : al.get(v).edges) {
-                if (l.targetVertex == v) {
-                    count++;
-                }
-
-            }
-            return count;
-        }
-        return 0;
-    }
 
 }
