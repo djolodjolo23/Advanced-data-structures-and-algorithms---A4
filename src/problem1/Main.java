@@ -11,6 +11,14 @@ public class Main {
         ug.addEdge(0, 1);
         ug.addEdge(0, 2);
 
+        IteratorVertex iv = new IteratorVertex(ug);
+
+        IteratorEdges<Graph.Edge> ie = new IteratorEdges<>(ug);
+
+        while (iv.hasNext()) {
+            System.out.println(iv.next().vertex);
+        }
+
         ug.removeEdge(0, 1);
 
         dg.addEdge(0, 1);

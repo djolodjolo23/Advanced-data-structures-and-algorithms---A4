@@ -9,23 +9,31 @@ public class UndirectedGraph extends Graph{
     @Override
     public void addWeightedEdge(int from, int to, int weight) {
         if (from < al.size() && to < al.size()) {
-            al.get(from).add(new Edge(to, weight));
-            al.get(to).add(new Edge(from, weight));
+            al.get(from).edges.addLast(new Edge(to, weight));
+            al.get(to).edges.addLast(new Edge(from, weight));
         }
     }
 
     @Override
     public void removeEdge(int from, int to) {
+        IteratorEdges<Edge> it = new IteratorEdges<>(this);
+        // find node with iterator
+        while (it.hasNext()) {
+            Edge e = it.next();
+            if (e.targetVertex == to) {
+                al.get(from).edges.remove(e);
+            }
+        }
         if (from < al.size() && to < al.size()) {
-            al.get(from).removeIf(e -> e.targetVertex == to);
-            al.get(to).removeIf(e -> e.targetVertex == from);
+            al.get(from).edges.removeIf(e -> e.targetVertex == to);
+            al.get(to).edges.removeIf(e -> e.targetVertex == from);
         }
     }
 
     @Override
     public int getDegree(int v) {
         if (v < al.size()) {
-            return al.get(v).size();
+            return al.get(v).edges.size();
         }
         return 0;
     }
@@ -34,8 +42,8 @@ public class UndirectedGraph extends Graph{
     @Override
     public void addEdge(int from, int to) {
         if (from < al.size() && to < al.size()) {
-            al.get(from).add(new Edge(to, 1));
-            al.get(to).add(new Edge(from, 1));
+            al.get(from).edges.add(new Edge(to, 1));
+            al.get(to).edges.add(new Edge(from, 1));
         }
     }
 
