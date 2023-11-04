@@ -7,14 +7,12 @@ import java.util.List;
 
 public class DepthFirstSearch {
 
-    private Graph graph;
-    private Graph.Vertex start;
-    private boolean[] visited;
-    private int[] edgeTo;
+    private final Graph.Vertex start;
+    private final boolean[] visited;
+    private final int[] edgeTo;
 
 
     public DepthFirstSearch(Graph g, int start) {
-        this.graph = g;
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];

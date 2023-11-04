@@ -3,6 +3,7 @@ package problem1;
 import problem1.iterators.IteratorAdjacencyList;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyLinkedList<AnyType> implements Iterable<AnyType>{
 
@@ -40,6 +41,10 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
         return theSize;
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
 
     public void addFirst(AnyType x) {
         Node<AnyType> newNode = new Node<>(x, head, head.next);
@@ -58,6 +63,33 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
 
         theSize++;
         modCount++;
+    }
+
+
+    public AnyType removeAndReturnFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("The linked list is empty, nothing to remove!");
+        } else {
+            AnyType data = head.next.data;
+            head.next = head.next.next;
+            head.next.prev = head;
+            theSize--;
+            modCount++;
+            return data;
+        }
+    }
+
+    public AnyType removeAndReturnLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("The linked list is empty, nothing to remove!");
+        } else {
+            AnyType data = tail.prev.data;
+            tail.prev = tail.prev.prev;
+            tail.prev.next = tail;
+            theSize--;
+            modCount++;
+            return data;
+        }
     }
 
 
