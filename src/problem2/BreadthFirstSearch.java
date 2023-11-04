@@ -27,10 +27,10 @@ public class BreadthFirstSearch {
     private void dfs(int v) {
         visited[v] = true;
         for (Graph.Vertex w : graph.vertices) {
-            if (!visited[w.vertex]) {
-                dfs(w.vertex);
+            if (!visited[w.element]) {
+                dfs(w.element);
             }
-            edgeTo[w.vertex] = v;
+            edgeTo[w.element] = v;
         }
     }
 

@@ -35,10 +35,10 @@ public abstract class Graph {
 
 
     public static class Edge {
-        public int targetVertex;
+        public Vertex targetVertex;
         int weight;
 
-        Edge(int targetVertex, int weight) {
+        Edge(Vertex targetVertex, int weight) {
             this.targetVertex = targetVertex;
             this.weight = weight;
 
@@ -46,22 +46,22 @@ public abstract class Graph {
     }
 
     public static class Vertex {
-        public Integer vertex;
+        public Integer element;
         public MyLinkedList<Edge> al;
 
         Vertex(int vertex) {
-            this.vertex = vertex;
+            this.element = vertex;
             al = new MyLinkedList<>();
         }
 
     }
 
-    public List<Integer> getEdges(int v) {
-        List<java.lang.Integer> edges = new ArrayList<>();
+    public List<Edge> getEdges(int v) {
+        List<Edge> edges = new ArrayList<>();
         Vertex vx = vertices.get(v);
         if (vx.al.size() != 0) {
             for (Edge e : vx.al) {
-                edges.add(e.targetVertex);
+                edges.add(e);
             }
         }
         return edges;

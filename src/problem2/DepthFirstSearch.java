@@ -8,26 +8,26 @@ import java.util.List;
 public class DepthFirstSearch {
 
     private Graph graph;
-    private int start;
-
+    private Graph.Vertex start;
     private boolean[] visited;
     private int[] edgeTo;
 
 
     public DepthFirstSearch(Graph g, int start) {
         this.graph = g;
-        this.start = start;
+        this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        dfs(start);
+        dfs(this.start);
     }
 
 
-    private void dfs(Graph.Edge e) { // edges must be used
-        v.visited = true;
+
+    private void dfs(Graph.Vertex v) {
+        visited[v.element] = true;
         for (Graph.Edge ew : v.al) {
-            if (!ew.visited) {
-                dfs(ew);
+            if (!visited[ew.targetVertex.element]) {
+                dfs(ew.targetVertex);
             }
         }
     }
@@ -37,17 +37,18 @@ public class DepthFirstSearch {
         return visited[v];
     }
 
+
     public List<Integer> pathTo(int v) {
         if (!hasPathTo(v)) {
             return null;
         }
-        int x = v;
-        List<Integer> path = new ArrayList<>();
-        while (x != start) {
-            path.add(0, x);
-            x = edgeTo[x];
+        int x = v; // end
+        List<Integer> path = new ArrayList<>(); // list for the path
+        while (x != start.element) { // while the end is not the start
+            path.add(0, x); // add the end to the list
+            x = edgeTo[x]; // set the end to the next element in the path
         }
-        path.add(0, start);
+        path.add(0, start.element);
         return path;
     }
 }

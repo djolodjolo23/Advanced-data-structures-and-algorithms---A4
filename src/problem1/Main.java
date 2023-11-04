@@ -50,7 +50,7 @@ public class Main {
 
 
         for (Graph.Edge e : v1.al) {
-            System.out.print(e.targetVertex + " ");
+            System.out.print(e.targetVertex.element + " ");
         }
 
         System.out.println();

@@ -38,7 +38,7 @@ public class IteratorEdges implements Iterator<VertexPair> {
         }
 
         Graph.Edge edge = edgeIterator.next();
-        return new VertexPair(currentVertexId, edge.targetVertex);
+        return new VertexPair(currentVertexId, edge.targetVertex.element);
     }
 }
 
