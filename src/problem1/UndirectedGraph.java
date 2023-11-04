@@ -11,8 +11,8 @@ public class UndirectedGraph extends Graph{
     @Override
     public void addWeightedEdge(int from, int to, int weight) {
         if (from < vertices.size() && to < vertices.size()) {
-            vertices.get(from).al.addLast(new Edge(vertices.get(to), weight));
-            vertices.get(to).al.addLast(new Edge(vertices.get(from), weight));
+            vertices.get(from).al.addLast(new Edge(vertices.get(to), weight, vertices.get(from)));
+            vertices.get(to).al.addLast(new Edge(vertices.get(from), weight, vertices.get(to)));
         }
     }
 
@@ -48,8 +48,8 @@ public class UndirectedGraph extends Graph{
     @Override
     public void addEdge(int from, int to) {
         if (from < vertices.size() && to < vertices.size()) {
-            vertices.get(from).al.addLast(new Edge(vertices.get(to), 1));
-            vertices.get(to).al.addLast(new Edge(vertices.get(from), 1));
+            vertices.get(from).al.addLast(new Edge(vertices.get(to), 1, vertices.get(from)));
+            vertices.get(to).al.addLast(new Edge(vertices.get(from), 1, vertices.get(to)));
         }
     }
 

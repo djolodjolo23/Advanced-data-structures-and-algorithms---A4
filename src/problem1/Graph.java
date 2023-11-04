@@ -1,5 +1,7 @@
 package problem1;
 
+import helpers.VertexPair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +36,20 @@ public abstract class Graph {
 
 
 
-    public static class Edge {
+    public static class Edge implements Comparable<Edge> {
+        public Vertex sourceVertex;
         public Vertex targetVertex;
-        int weight;
+        public int weight;
 
-        Edge(Vertex targetVertex, int weight) {
+        Edge(Vertex targetVertex, int weight, Vertex sourceVertex) {
             this.targetVertex = targetVertex;
             this.weight = weight;
+            this.sourceVertex = sourceVertex;
+        }
 
+        @Override
+        public int compareTo(Edge o) {
+            return Integer.compare(this.weight, o.weight);
         }
     }
 
@@ -59,9 +67,21 @@ public abstract class Graph {
     public List<Edge> getEdges(int v) {
         List<Edge> edges = new ArrayList<>();
         Vertex vx = vertices.get(v);
-        if (vx.al.size() != 0) {
+        if (!vx.al.isEmpty()) {
             for (Edge e : vx.al) {
                 edges.add(e);
+            }
+        }
+        return edges;
+    }
+
+    public List<Edge> getAllEdges() {
+        List<Edge> edges = new ArrayList<>();
+        for (Vertex v : vertices) {
+            if (!v.al.isEmpty()) {
+                for (Edge e : v.al) {
+                    edges.add(e);
+                }
             }
         }
         return edges;

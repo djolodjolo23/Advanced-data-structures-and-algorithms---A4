@@ -9,7 +9,7 @@ public class DirectedGraph extends Graph{
     @Override
     public void addWeightedEdge(int v, int w, int weight) {
         if (v < vertices.size() && w < vertices.size()) {
-            vertices.get(v).al.addLast(new Edge(vertices.get(w), weight));
+            vertices.get(v).al.addLast(new Edge(vertices.get(w), weight, vertices.get(v)));
         }
     }
 
@@ -39,7 +39,7 @@ public class DirectedGraph extends Graph{
     @Override
     public void addEdge(int v, int w) {
         if (v < vertices.size() && w < vertices.size()) {
-            vertices.get(v).al.addLast(new Edge(vertices.get(w), 1));
+            vertices.get(v).al.addLast(new Edge(vertices.get(w), 1, vertices.get(v)));
         }
     }
 
