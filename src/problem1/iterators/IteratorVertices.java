@@ -1,4 +1,6 @@
-package problem1;
+package problem1.iterators;
+import problem1.Graph;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +11,7 @@ public class IteratorVertices implements Iterator<Graph.Vertex> {
 
     public IteratorVertices(Graph graph) {
         list = new ArrayList<>();
-        list.addAll(graph.al);
+        list.addAll(graph.vertices);
         index = 0;
     }
 

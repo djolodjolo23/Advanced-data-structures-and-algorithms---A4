@@ -1,5 +1,7 @@
 package problem1;
 
+import problem1.iterators.IteratorAdjacencyList;
+
 import java.util.Iterator;
 
 public class MyLinkedList<AnyType> implements Iterable<AnyType>{
@@ -9,7 +11,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
         return new IteratorAdjacencyList<>(this);
     }
 
-    static class Node<AnyType> {
+    public static class Node<AnyType> {
         public AnyType data;
         public Node<AnyType> prev;
         public Node<AnyType> next;
@@ -25,8 +27,8 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
     private int theSize;
     private int modCount = 0;
 
-    Node<AnyType> head;
-    Node<AnyType> tail;
+    public Node<AnyType> head;
+    public Node<AnyType> tail;
 
     public MyLinkedList() {
         head = new Node<>(null, null, null);

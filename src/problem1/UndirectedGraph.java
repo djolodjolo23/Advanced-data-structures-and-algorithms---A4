@@ -1,6 +1,5 @@
 package problem1;
 
-import java.util.List;
 
 public class UndirectedGraph extends Graph{
 
@@ -11,26 +10,26 @@ public class UndirectedGraph extends Graph{
 
     @Override
     public void addWeightedEdge(int from, int to, int weight) {
-        if (from < al.size() && to < al.size()) {
-            al.get(from).edges.addLast(new Edge(to, weight));
-            al.get(to).edges.addLast(new Edge(from, weight));
+        if (from < vertices.size() && to < vertices.size()) {
+            vertices.get(from).al.addLast(new Edge(to, weight));
+            vertices.get(to).al.addLast(new Edge(from, weight));
         }
     }
 
     @Override
     public void removeEdge(int v, int w) {
-        if (v < al.size() && w < al.size()) {
-            Vertex from = al.get(v);
-            Vertex to = al.get(w);
-            for (Edge e : from.edges) {
+        if (v < vertices.size() && w < vertices.size()) {
+            Vertex from = vertices.get(v);
+            Vertex to = vertices.get(w);
+            for (Edge e : from.al) {
                 if (e.targetVertex == w) {
-                    from.edges.remove(e);
+                    from.al.remove(e);
                     break;
                 }
             }
-            for (Edge e : to.edges) {
+            for (Edge e : to.al) {
                 if (e.targetVertex == v) {
-                    to.edges.remove(e);
+                    to.al.remove(e);
                     break;
                 }
             }
@@ -39,8 +38,8 @@ public class UndirectedGraph extends Graph{
 
     @Override
     public int getDegree(int v) {
-        if (v < al.size()) {
-            return al.get(v).edges.size();
+        if (v < vertices.size()) {
+            return vertices.get(v).al.size();
         }
         return 0;
     }
@@ -48,9 +47,9 @@ public class UndirectedGraph extends Graph{
 
     @Override
     public void addEdge(int from, int to) {
-        if (from < al.size() && to < al.size()) {
-            al.get(from).edges.addLast(new Edge(to, 1));
-            al.get(to).edges.addLast(new Edge(from, 1));
+        if (from < vertices.size() && to < vertices.size()) {
+            vertices.get(from).al.addLast(new Edge(to, 1));
+            vertices.get(to).al.addLast(new Edge(from, 1));
         }
     }
 

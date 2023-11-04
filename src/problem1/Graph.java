@@ -5,23 +5,23 @@ import java.util.List;
 
 public abstract class Graph {
 
-    public List<Vertex> al;
+    public List<Vertex> vertices;
 
     public Graph(int numVertices) {
-        al = new ArrayList<>();
+        vertices = new ArrayList<>();
         for (int i = 0; i < numVertices; i++) {
-            al.add(new Vertex(i));
+            vertices.add(new Vertex(i));
         }
     }
 
     public int getVertexCount() {
-        return al.size();
+        return vertices.size();
     }
 
     public int getEdgesCount() {
         int count = 0;
-        for (Vertex vertex : al) {
-            count += vertex.edges.size();
+        for (Vertex vertex : vertices) {
+            count += vertex.al.size();
         }
         if (this instanceof UndirectedGraph) {
             return count / 2;
@@ -34,8 +34,8 @@ public abstract class Graph {
 
 
 
-    static class Edge {
-        int targetVertex;
+    public static class Edge {
+        public int targetVertex;
         int weight;
 
         Edge(int targetVertex, int weight) {
@@ -46,21 +46,21 @@ public abstract class Graph {
     }
 
     public static class Vertex {
-        Integer vertex;
-        MyLinkedList<Edge> edges;
+        public Integer vertex;
+        public MyLinkedList<Edge> al;
 
         Vertex(int vertex) {
             this.vertex = vertex;
-            edges = new MyLinkedList<>();
+            al = new MyLinkedList<>();
         }
 
     }
 
     public List<Integer> getEdges(int v) {
         List<java.lang.Integer> edges = new ArrayList<>();
-        Vertex vx = al.get(v);
-        if (vx.edges.size() != 0) {
-            for (Edge e : vx.edges) {
+        Vertex vx = vertices.get(v);
+        if (vx.al.size() != 0) {
+            for (Edge e : vx.al) {
                 edges.add(e.targetVertex);
             }
         }

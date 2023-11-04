@@ -1,5 +1,7 @@
 package problem1;
 
+import problem1.iterators.IteratorEdges;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -39,7 +41,7 @@ public class Main {
 
          */
 
-        Graph.Vertex v1 = dg.al.get(0);
+        Graph.Vertex v1 = dg.vertices.get(0);
 
         ie = new IteratorEdges(dg);
         while (ie.hasNext()) {
@@ -47,7 +49,7 @@ public class Main {
         }
 
 
-        for (Graph.Edge e : v1.edges) {
+        for (Graph.Edge e : v1.al) {
             System.out.print(e.targetVertex + " ");
         }
 

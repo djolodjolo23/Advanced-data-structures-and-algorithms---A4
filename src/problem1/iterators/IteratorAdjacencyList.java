@@ -1,4 +1,6 @@
-package problem1;
+package problem1.iterators;
+
+import problem1.MyLinkedList;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

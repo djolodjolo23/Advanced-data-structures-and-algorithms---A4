@@ -1,4 +1,4 @@
-package problem1;
+package helpers;
 
 /**
  * A pair of vertices used to represent an edge, used in the IteratorForPrinting.
