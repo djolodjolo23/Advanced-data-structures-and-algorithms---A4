@@ -27,6 +27,7 @@ public class DepthFirstSearch {
         visited[v.element] = true;
         for (Graph.Edge ew : v.al) {
             if (!visited[ew.targetVertex.element]) {
+                edgeTo[ew.targetVertex.element] = v.element;
                 dfs(ew.targetVertex);
             }
         }
@@ -42,11 +43,11 @@ public class DepthFirstSearch {
         if (!hasPathTo(v)) {
             return null;
         }
-        int x = v; // end
-        List<Integer> path = new ArrayList<>(); // list for the path
-        while (x != start.element) { // while the end is not the start
-            path.add(0, x); // add the end to the list
-            x = edgeTo[x]; // set the end to the next element in the path
+        int x = v;
+        List<Integer> path = new ArrayList<>();
+        while (x != start.element) {
+            path.add(0, x);
+            x = edgeTo[x];
         }
         path.add(0, start.element);
         return path;

@@ -11,13 +11,15 @@ public class Main {
         directedGraph.addEdge(0, 1);
         directedGraph.addEdge(1, 2);
         directedGraph.addEdge(2, 3);
-        //directedGraph.addEdge(3, 4);
+        directedGraph.addEdge(3, 4);
         directedGraph.addEdge(4, 0);
 
 
-        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(directedGraph, 0);
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(directedGraph, 4);
 
-        System.out.println(depthFirstSearch.hasPathTo(4));
+        System.out.println(depthFirstSearch.hasPathTo(0));
+
+        System.out.println(depthFirstSearch.pathTo(0));
 
 
 
