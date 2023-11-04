@@ -5,32 +5,37 @@ import problem1.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.*;
+
 public class BreadthFirstSearch {
 
     private Graph graph;
-    private int start;
+    private Graph.Vertex start;
 
     private boolean[] visited;
     private int[] edgeTo;
 
-
     public BreadthFirstSearch(Graph g, int start) {
         this.graph = g;
-        this.start = start;
+        this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        dfs(start);
-
+        bfs(this.start);
     }
 
-
-    private void dfs(int v) {
-        visited[v] = true;
-        for (Graph.Vertex w : graph.vertices) {
-            if (!visited[w.element]) {
-                dfs(w.element);
+    private void bfs(Graph.Vertex v) {
+        Queue<Graph.Vertex> queue = new LinkedList<>();
+        queue.add(v);
+        visited[v.element] = true;
+        while (!queue.isEmpty()) {
+            Graph.Vertex vertex = queue.remove();
+            for (Graph.Edge ew : vertex.al) {
+                if (!visited[ew.targetVertex.element]) {
+                    queue.add(ew.targetVertex);
+                    visited[ew.targetVertex.element] = true;
+                    edgeTo[ew.targetVertex.element] = vertex.element;
+                }
             }
-            edgeTo[w.element] = v;
         }
     }
 
@@ -43,15 +48,13 @@ public class BreadthFirstSearch {
         if (!hasPathTo(v)) {
             return null;
         }
-        int x = v;
         List<Integer> path = new ArrayList<>();
-        while (x != start) {
-            path.add(0, x);
-            x = edgeTo[x];
+        for (int x = v; x != start.element; x = edgeTo[x]) {
+            path.add(x);
         }
-        path.add(0, start);
+        path.add(start.element);
+        Collections.reverse(path);
         return path;
     }
-
 
 }
