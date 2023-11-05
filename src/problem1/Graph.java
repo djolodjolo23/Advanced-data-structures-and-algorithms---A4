@@ -1,6 +1,7 @@
 package problem1;
 
 import helpers.VertexPair;
+import problem4.Dijkstra;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public abstract class Graph {
 
 
     public static class Edge implements Comparable<Edge> {
-        public Vertex sourceVertex;
+        public Vertex sourceVertex; // the source vertex is used in Kruskal's algorithm
         public Vertex targetVertex;
         public int weight;
 
@@ -56,12 +57,27 @@ public abstract class Graph {
     public static class Vertex {
         public Integer element;
         public MyLinkedList<Edge> al;
+        public int distance;
+        public Vertex path;
+        public boolean known;
 
-        Vertex(int vertex) {
+
+        public Vertex(int vertex) {
             this.element = vertex;
             al = new MyLinkedList<>();
+            distance = Integer.MAX_VALUE;
+            known = false;
         }
 
+        public int getMinWeight() {
+            int min = Integer.MAX_VALUE;
+            for (Edge e : al) {
+                if (e.weight < min) {
+                    min = e.weight;
+                }
+            }
+            return min;
+        }
     }
 
     public List<Edge> getEdges(int v) {
