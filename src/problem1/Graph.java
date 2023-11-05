@@ -54,7 +54,7 @@ public abstract class Graph {
         }
     }
 
-    public static class Vertex {
+    public static class Vertex implements Comparable<Vertex> {
         public Integer element;
         public MyLinkedList<Edge> al;
         public int distance;
@@ -77,6 +77,11 @@ public abstract class Graph {
                 }
             }
             return min;
+        }
+
+        @Override
+        public int compareTo(Vertex o) {
+            return Integer.compare(this.distance, o.distance);
         }
     }
 
