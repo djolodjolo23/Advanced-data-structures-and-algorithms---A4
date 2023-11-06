@@ -12,6 +12,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         this.currentSize = 0;
     }
 
+
     public BinaryHeap(AnyType[] array) {
         this.currentSize = array.length;
         this.array = (AnyType[]) new Comparable[(currentSize + 2) * 11 / 10];
@@ -41,12 +42,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
     }
 
 
-    public void deleteMin() {
+    public AnyType deleteMin() {
         if (isEmpty()) {
             throw new BufferUnderflowException();
         }
+        AnyType min = findMin();
         array[1] = array[currentSize--];
         percolateDown(1);
+        return min;
     }
 
 

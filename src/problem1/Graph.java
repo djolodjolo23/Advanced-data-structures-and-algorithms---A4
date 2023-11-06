@@ -38,7 +38,8 @@ public abstract class Graph {
 
 
     public static class Edge implements Comparable<Edge> {
-        public Vertex sourceVertex; // the source vertex is used in Kruskal's algorithm
+        public Vertex sourceVertex;
+
         public Vertex targetVertex;
         public int weight;
 

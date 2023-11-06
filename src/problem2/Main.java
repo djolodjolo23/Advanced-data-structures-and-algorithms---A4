@@ -25,18 +25,22 @@ public class Main {
 
          */
 
-        UndirectedGraph undirectedGraph = new UndirectedGraph(5);
+        UndirectedGraph undirectedGraph = new UndirectedGraph(3);
 
         undirectedGraph.addEdge(0, 1);
         undirectedGraph.addEdge(1, 2);
-        undirectedGraph.addEdge(2, 3);
-        undirectedGraph.addEdge(3, 4);
-        undirectedGraph.addEdge(4, 0);
+        undirectedGraph.addEdge(0, 2);
 
+
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(undirectedGraph, 0);
+
+        System.out.println(depthFirstSearch.hasPathTo(2));
+
+        System.out.println(depthFirstSearch.pathTo(2));
 
         BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(undirectedGraph, 0);
 
-        System.out.println(breadthFirstSearch.hasPathTo(3));
+        System.out.println(breadthFirstSearch.hasPathTo(2));
 
         System.out.println(breadthFirstSearch.pathTo(2));
 

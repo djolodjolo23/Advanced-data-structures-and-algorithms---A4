@@ -4,7 +4,7 @@ import problem1.Graph;
 
 public class Dijkstra {
 
-    private BinaryHeap<Graph.Vertex> bh;
+    private final BinaryHeap<Graph.Vertex> bh;
 
 
     public Dijkstra(BinaryHeap<Graph.Vertex> bh) {
@@ -19,17 +19,17 @@ public class Dijkstra {
         }
         vertices[start].distance = 0;
         for (int i = 0; i < vertices.length; i++) {
-            Graph.Vertex v = bh.findMin();
+            Graph.Vertex v = bh.findMin(); // first find to update distances
             v.known = true;
             for (Graph.Edge e : v.al) {
                 if (!vertices[e.targetVertex.element].known) {
                     if (v.distance + e.weight < vertices[e.targetVertex.element].distance) {
                         vertices[e.targetVertex.element].distance = v.distance + e.weight;
-                        vertices[e.targetVertex.element].path = v;
+                        vertices[e.targetVertex.element].path = v; // last visited
                     }
                 }
             }
-            bh.deleteMin();
+            bh.deleteMin(); // now delete to update heap
         }
         for (int i = 0; i < vertices.length; i++) {
             System.out.println("Vertex: " + i + " Distance: " + vertices[i].distance);
