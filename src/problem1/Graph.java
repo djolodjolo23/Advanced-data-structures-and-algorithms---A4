@@ -5,6 +5,7 @@ import problem4.Dijkstra;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Graph {
 
@@ -84,6 +85,15 @@ public abstract class Graph {
         public int compareTo(Vertex o) {
             return Integer.compare(this.distance, o.distance);
         }
+
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null || getClass() != object.getClass()) return false;
+            Vertex vertex = (Vertex) object;
+            return Objects.equals(element, vertex.element);
+        }
+
     }
 
     public List<Edge> getEdges(int v) {
