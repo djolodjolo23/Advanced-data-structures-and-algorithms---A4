@@ -18,13 +18,15 @@ public class DepthFirstSearch {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        exploreGraph(g);
+        run(g);
     }
 
 
-    private void exploreGraph(Graph g) {
+    private void run(Graph g) {
         for (Graph.Vertex v : g.vertices) {
-            dfs(v);
+            if (!visited[v.element]) {
+                dfs(v);
+            }
         }
     }
 
