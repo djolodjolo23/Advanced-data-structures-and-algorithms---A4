@@ -57,11 +57,17 @@ public abstract class Graph {
     }
 
     public static class Vertex implements Comparable<Vertex> {
+
         public Integer element;
         public MyLinkedList<Edge> al;
         public int distance;
         public Vertex path;
         public boolean known;
+
+        public int degree;
+        public int indegree; // used for topological sort
+        public int outdegree; // not used but might be useful in some cases
+        public int topNum; // used for topological sort
 
 
         public Vertex(int vertex) {
@@ -69,6 +75,10 @@ public abstract class Graph {
             al = new MyLinkedList<>();
             distance = Integer.MAX_VALUE;
             known = false;
+            degree = 0;
+            indegree = 0;
+            outdegree = 0;
+            topNum = 0;
         }
 
         public int getMinWeight() {
@@ -80,6 +90,7 @@ public abstract class Graph {
             }
             return min;
         }
+
 
         @Override
         public int compareTo(Vertex o) {

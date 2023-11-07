@@ -9,7 +9,10 @@ public class DirectedGraph extends Graph{
     @Override
     public void addWeightedEdge(int v, int w, int weight) {
         if (v < vertices.size() && w < vertices.size()) {
-            vertices.get(v).al.addLast(new Edge(vertices.get(w), weight, vertices.get(v)));
+            Vertex from = vertices.get(v);
+            Vertex to = vertices.get(w);
+            from.al.addLast(new Edge(to, weight, from));
+            from.outdegree++;to.indegree++;
         }
     }
 
@@ -17,9 +20,11 @@ public class DirectedGraph extends Graph{
     public void removeEdge(int v, int w) {
         if (v < vertices.size() && w < vertices.size()) {
             Vertex from = vertices.get(v);
+            Vertex to = vertices.get(w);
             for (Edge e : from.al) {
-                if (e.targetVertex == vertices.get(w)) {
+                if (e.targetVertex == to) {
                     from.al.remove(e);
+                    from.outdegree--;to.indegree--;
                     break;
                 }
             }
@@ -39,9 +44,11 @@ public class DirectedGraph extends Graph{
     @Override
     public void addEdge(int v, int w) {
         if (v < vertices.size() && w < vertices.size()) {
-            vertices.get(v).al.addLast(new Edge(vertices.get(w), 1, vertices.get(v)));
+            Vertex from = vertices.get(v);
+            Vertex to = vertices.get(w);
+            from.al.addLast(new Edge(to, 1, from));
+            from.outdegree++;to.indegree++;
         }
     }
-
 
 }

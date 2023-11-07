@@ -16,7 +16,15 @@ public class BreadthFirstSearch {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        bfs(this.start);
+        run(g);
+    }
+
+    public void run(Graph g) {
+        for (Graph .Vertex v : g.vertices) {
+            if (!visited[v.element]) {
+                bfs(v);
+            }
+        }
     }
 
     private void bfs(Graph.Vertex v) {

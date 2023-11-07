@@ -3,10 +3,13 @@ package problem5;
 
 import problem1.DirectedGraph;
 import problem1.Graph;
+import problem1.MyLinkedList;
 import problem2.DepthFirstSearch;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 public class Main {
 
@@ -20,19 +23,21 @@ public class Main {
 
         Map<String, Integer> courseIdToNumber = graphCreator.getCourseIdToNumber();
 
-        DepthFirstSearch dfs = new DepthFirstSearch(directedGraph, 0);
+        TopologicalSort topologicalSort = new TopologicalSort(directedGraph);
 
-        List<Integer> prerequisites = dfs.getPrerequisites();
+        topologicalSort.topsort();
 
-        System.out.println("All prerequisite courses: ");
-        for (Integer pr : prerequisites) {
+        directedGraph.vertices.sort((o1, o2) -> o2.topNum - o1.topNum);
+
+        System.out.println();
+
+        System.out.println("Courses sorted by topological sort:");
+        for (Graph.Vertex v : directedGraph.vertices) {
             for (Map.Entry<String, Integer> entry : courseIdToNumber.entrySet()) {
-                if (entry.getValue().equals(pr)) {
+                if (entry.getValue().equals(v.element)) {
                     System.out.println(entry.getKey());
                 }
             }
         }
-
-
     }
 }

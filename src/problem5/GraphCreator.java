@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class GraphCreator {
 
     private Map<String, Integer> courseIdToNumber;
-    private DirectedGraph graph;
+    private final DirectedGraph graph;
 
     public GraphCreator() {
         courseIdToNumber = new HashMap<>();
@@ -35,6 +35,7 @@ public class GraphCreator {
 
                 Graph.Vertex source = new Graph.Vertex(sourceNumber);
                 Graph.Vertex target = new Graph.Vertex(targetNumber);
+
                 if (!graph.vertices.contains(source)) {
                     graph.vertices.add(source);
                 }

@@ -11,7 +11,6 @@ public class DepthFirstSearch {
     private final boolean[] visited;
     private final int[] edgeTo;
 
-    private List<Integer> prerequisites = new ArrayList<>(); // used in a problem 5
 
 
     public DepthFirstSearch(Graph g, int start) {
@@ -37,15 +36,9 @@ public class DepthFirstSearch {
                 edgeTo[ew.targetVertex.element] = v.element;
                 dfs(ew.targetVertex);
             }
-            if (!prerequisites.contains(ew.targetVertex.element)) { // used in a problem 5
-                prerequisites.add(ew.targetVertex.element);
-            }
         }
     }
 
-    public List<Integer> getPrerequisites() {
-        return prerequisites;
-    }
 
     public boolean hasPathTo(int v) {
         return visited[v];
