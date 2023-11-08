@@ -1,9 +1,8 @@
 package problem3;
 
-import problem1.DirectedGraph;
-import problem1.Edge;
-import problem1.Graph;
+import problem1.*;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,21 +11,26 @@ public class Main {
     public static void main(String[] args) {
 
 
-        DirectedGraph directedGraph = new DirectedGraph(5);
+        UndirectedGraph undirectedGraph = new UndirectedGraph(5);
 
-        directedGraph.addWeightedEdge(0, 1, 3);
-        directedGraph.addWeightedEdge(1, 2, 5);
-        directedGraph.addEdge(2, 3);
-        directedGraph.addEdge(3, 4);
-        directedGraph.addWeightedEdge(4, 0, 2);
+        undirectedGraph.addWeightedEdge(0, 1, 3);
+        undirectedGraph.addWeightedEdge(1, 2, 5);
+        undirectedGraph.addEdge(2, 0);
+        undirectedGraph.addEdge(3, 4);
+        undirectedGraph.addWeightedEdge(4, 0, 2);
 
-        List<Edge> minSpanningTree = Kruskal.kruskal(directedGraph.getAllEdges(), 5);
 
-        minSpanningTree.sort(Comparator.comparingInt(o -> o.sourceVertex.element));
+        Kruskal kruskal = new Kruskal();
 
-        for (Edge edge : minSpanningTree) {
-            System.out.println(edge.sourceVertex.element + "-" + edge.targetVertex.element);
-        }
+        ComponentFinder componentFinder = new ComponentFinder(undirectedGraph, 0);
+
+        List<List<Vertex>> connectedComponents =  componentFinder.findComponents(undirectedGraph);
+
+        kruskal.createMinSpanningForest(connectedComponents);
+
+
+
+
 
     }
 }

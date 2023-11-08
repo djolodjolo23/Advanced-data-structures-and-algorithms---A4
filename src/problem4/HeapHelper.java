@@ -11,7 +11,7 @@ import java.util.Set;
 
 
 /*
-    * The HeapHelper class is used to create a heap array from a list of vertices.
+ * The HeapHelper class is used to create a heap array from a list of vertices.
  */
 public class HeapHelper {
 

@@ -5,21 +5,21 @@ import problem1.Graph;
 import problem1.Vertex;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DepthFirstSearch {
 
-    private final Vertex start;
+    protected final Vertex start;
     protected boolean[] visited;
     protected final int[] edgeTo;
-
 
 
     public DepthFirstSearch(Graph g, int start) {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        dfs(this.start);
     }
 
 

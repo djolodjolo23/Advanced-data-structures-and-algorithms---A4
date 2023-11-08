@@ -5,11 +5,11 @@ import java.util.Objects;
 public class Vertex implements Comparable<Vertex> {
 
     public Integer element;
-    public MyLinkedList<Edge> al;
-    public int distance;
-    public Vertex path;
-    public boolean known;
 
+    public MyLinkedList<Edge> al; // adjacency list of edges
+    public int distance; // used in Dijkstra's algorithm
+    public Vertex path; // used in Dijkstra's algorithm
+    public boolean known; // used in Dijkstra's algorithm
     public int degree;
     public int indegree; // used for topological sort
     public int outdegree; // not used but might be useful in some cases

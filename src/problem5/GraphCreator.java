@@ -43,7 +43,7 @@ public class GraphCreator {
                 if (!graph.vertices.contains(target)) {
                     graph.vertices.add(target);
                 }
-                graph.addEdge(sourceNumber, targetNumber);
+                graph.addEdge(targetNumber, sourceNumber);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
