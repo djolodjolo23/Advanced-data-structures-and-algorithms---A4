@@ -1,14 +1,17 @@
 package problem2;
 
+import problem1.Edge;
 import problem1.Graph;
 import problem1.MyLinkedList;
+import problem1.Vertex;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class BreadthFirstSearch {
 
-    private final Graph.Vertex start;
+    private final Vertex start;
     protected boolean[] visited;
     protected final int[] edgeTo;
 
@@ -19,13 +22,13 @@ public class BreadthFirstSearch {
         bfs(this.start);
     }
 
-    protected void bfs(Graph.Vertex v) {
-        MyLinkedList<Graph.Vertex> q = new MyLinkedList<>();
+    protected void bfs(Vertex v) {
+        MyLinkedList<Vertex> q = new MyLinkedList<>();
         q.addLast(v);
         visited[v.element] = true;
         while (!q.isEmpty()) {
-            Graph.Vertex vertex = q.removeAndReturnFirst();
-            for (Graph.Edge ew : vertex.al) {
+            Vertex vertex = q.removeAndReturnFirst();
+            for (Edge ew : vertex.al) {
                 if (!visited[ew.targetVertex.element]) {
                     q.addLast(ew.targetVertex);
                     visited[ew.targetVertex.element] = true;

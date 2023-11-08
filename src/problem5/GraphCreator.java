@@ -2,6 +2,7 @@ package problem5;
 
 import problem1.DirectedGraph;
 import problem1.Graph;
+import problem1.Vertex;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -33,8 +34,8 @@ public class GraphCreator {
                 int sourceNumber = courseIdToNumber.computeIfAbsent(sourceCourse, s -> courseNumber.getAndIncrement());
                 int targetNumber = courseIdToNumber.computeIfAbsent(targetCourse, t -> courseNumber.getAndIncrement());
 
-                Graph.Vertex source = new Graph.Vertex(sourceNumber);
-                Graph.Vertex target = new Graph.Vertex(targetNumber);
+                Vertex source = new Vertex(sourceNumber);
+                Vertex target = new Vertex(targetNumber);
 
                 if (!graph.vertices.contains(source)) {
                     graph.vertices.add(source);

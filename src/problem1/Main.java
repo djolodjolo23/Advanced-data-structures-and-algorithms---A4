@@ -41,7 +41,7 @@ public class Main {
 
          */
 
-        Graph.Vertex v1 = dg.vertices.get(0);
+        Vertex v1 = dg.vertices.get(0);
 
         ie = new IteratorEdges(dg);
         while (ie.hasNext()) {
@@ -49,7 +49,7 @@ public class Main {
         }
 
 
-        for (Graph.Edge e : v1.al) {
+        for (Edge e : v1.al) {
             System.out.print(e.targetVertex.element + " ");
         }
 

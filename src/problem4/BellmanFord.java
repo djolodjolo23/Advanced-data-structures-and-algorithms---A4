@@ -1,5 +1,6 @@
 package problem4;
 
+import problem1.Edge;
 import problem1.Graph;
 
 import java.util.Arrays;
@@ -13,9 +14,9 @@ public class BellmanFord {
         int[] distance = new int[numVertices];
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[source] = 0;
-        List<Graph.Edge> edges = g.getAllEdges();
+        List<Edge> edges = g.getAllEdges();
         for (int i = 1; i < numVertices - 1; i++) {
-            for (Graph.Edge e : edges) {
+            for (Edge e : edges) {
                 int u = e.sourceVertex.element;
                 int v = e.targetVertex.element;
                 int w = e.weight;
@@ -24,7 +25,7 @@ public class BellmanFord {
                 }
             }
         }
-        for (Graph.Edge e : edges) {
+        for (Edge e : edges) {
             int u = e.sourceVertex.element;
             int v = e.targetVertex.element;
             int w = e.weight;

@@ -4,6 +4,7 @@ import helpers.CSVExporter;
 import helpers.Timer;
 import problem1.DirectedGraph;
 import problem1.Graph;
+import problem1.Vertex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +35,10 @@ public class Main {
         dg.addWeightedEdge(4, 6, 6);
         dg.addWeightedEdge(6, 5, 1);
 
-        List<Graph.Vertex> vertices = new ArrayList<>(dg.vertices);
+        List<Vertex> vertices = new ArrayList<>(dg.vertices);
 
 
-        Graph.Vertex[] heapArray = HeapHelper.createHeapArray(vertices, 0);
+        Vertex[] heapArray = HeapHelper.createHeapArray(vertices, 0);
 
         Dijkstra dijkstra = new Dijkstra(new BinaryHeap<>(heapArray));
 

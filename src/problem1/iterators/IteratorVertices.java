@@ -1,13 +1,14 @@
 package problem1.iterators;
 import problem1.Graph;
+import problem1.Vertex;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class IteratorVertices implements Iterator<Graph.Vertex> {
+public class IteratorVertices implements Iterator<Vertex> {
     private int index;
-    private final List<Graph.Vertex> list;
+    private final List<Vertex> list;
 
     public IteratorVertices(Graph graph) {
         list = new ArrayList<>();
@@ -21,7 +22,7 @@ public class IteratorVertices implements Iterator<Graph.Vertex> {
     }
 
     @Override
-    public Graph.Vertex next() {
+    public Vertex next() {
         return list.get(index++);
     }
 }

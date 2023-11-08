@@ -4,6 +4,7 @@ package problem5;
 import problem1.DirectedGraph;
 import problem1.Graph;
 import problem1.MyLinkedList;
+import problem1.Vertex;
 import problem2.DepthFirstSearch;
 
 import java.util.Comparator;
@@ -32,7 +33,7 @@ public class Main {
         System.out.println();
 
         System.out.println("Courses sorted by topological sort:");
-        for (Graph.Vertex v : directedGraph.vertices) {
+        for (Vertex v : directedGraph.vertices) {
             for (Map.Entry<String, Integer> entry : courseIdToNumber.entrySet()) {
                 if (entry.getValue().equals(v.element)) {
                     System.out.println(entry.getKey());

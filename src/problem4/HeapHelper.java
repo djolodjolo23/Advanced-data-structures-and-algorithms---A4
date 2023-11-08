@@ -1,6 +1,8 @@
 package problem4;
 
+import problem1.Edge;
 import problem1.Graph;
+import problem1.Vertex;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,12 +15,12 @@ import java.util.Set;
  */
 public class HeapHelper {
 
-    public static Graph.Vertex[] createHeapArray(List<Graph.Vertex> vertices, int startIndex) {
-        List<Graph.Vertex> heapList = new ArrayList<>();
-        Set<Graph.Vertex> visited = new HashSet<>();
+    public static Vertex[] createHeapArray(List<Vertex> vertices, int startIndex) {
+        List<Vertex> heapList = new ArrayList<>();
+        Set<Vertex> visited = new HashSet<>();
 
         traverseVertex(vertices.get(startIndex), heapList, visited);
-        Graph.Vertex[] heapArray = new Graph.Vertex[heapList.size()];
+        Vertex[] heapArray = new Vertex[heapList.size()];
         for (int i = 0; i < heapList.size(); i++) {
             heapArray[i] = heapList.get(i);
         }
@@ -26,11 +28,11 @@ public class HeapHelper {
         return heapArray;
     }
 
-    private static void traverseVertex(Graph.Vertex vertex, List<Graph.Vertex> heapList, Set<Graph.Vertex> visited) {
+    private static void traverseVertex(Vertex vertex, List<Vertex> heapList, Set<Vertex> visited) {
         if (vertex != null && !visited.contains(vertex)) {
             heapList.add(vertex);
             visited.add(vertex);
-            for (Graph.Edge edge : vertex.al) {
+            for (Edge edge : vertex.al) {
                 traverseVertex(edge.targetVertex, heapList, visited);
             }
         }

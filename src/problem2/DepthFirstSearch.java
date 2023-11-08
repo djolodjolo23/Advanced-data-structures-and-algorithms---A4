@@ -1,13 +1,15 @@
 package problem2;
 
+import problem1.Edge;
 import problem1.Graph;
+import problem1.Vertex;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepthFirstSearch {
 
-    private final Graph.Vertex start;
+    private final Vertex start;
     protected boolean[] visited;
     protected final int[] edgeTo;
 
@@ -21,9 +23,9 @@ public class DepthFirstSearch {
     }
 
 
-    protected void dfs(Graph.Vertex v) {
+    protected void dfs(Vertex v) {
         visited[v.element] = true;
-        for (Graph.Edge ew : v.al) {
+        for (Edge ew : v.al) {
             if (!visited[ew.targetVertex.element]) {
                 edgeTo[ew.targetVertex.element] = v.element;
                 dfs(ew.targetVertex);

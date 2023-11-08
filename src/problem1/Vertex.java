@@ -5,9 +5,9 @@ import java.util.Objects;
 public class Vertex implements Comparable<Vertex> {
 
     public Integer element;
-    public MyLinkedList<Graph.Edge> al;
+    public MyLinkedList<Edge> al;
     public int distance;
-    public Graph.Vertex path;
+    public Vertex path;
     public boolean known;
 
     public int degree;
@@ -29,7 +29,7 @@ public class Vertex implements Comparable<Vertex> {
 
     public int getMinWeight() {
         int min = Integer.MAX_VALUE;
-        for (Graph.Edge e : al) {
+        for (Edge e : al) {
             if (e.weight < min) {
                 min = e.weight;
             }
