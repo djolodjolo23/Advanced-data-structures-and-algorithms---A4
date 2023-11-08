@@ -17,11 +17,11 @@ public class Kruskal {
         while (mst.size() != numVertices - 1) {
             Graph.Edge e = bh.findMin();
             assert e != null;
-            int uset = ds.findRoot(e.sourceVertex.element);
-            int vset = ds.findRoot(e.targetVertex.element);
-            if (uset != vset) {
+            int uSet = ds.findRoot(e.sourceVertex.element);
+            int vSet = ds.findRoot(e.targetVertex.element);
+            if (uSet != vSet) {
                 mst.add(e);
-                ds.makeUnion(uset, vset);
+                ds.makeUnion(uSet, vSet);
             }
             bh.deleteMin();
         }

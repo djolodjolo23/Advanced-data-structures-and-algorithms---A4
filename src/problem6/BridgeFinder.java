@@ -12,6 +12,7 @@ public class BridgeFinder extends DepthFirstSearch {// Or BreadthFirstSearch. It
         super(g, start);
     }
 
+
     public boolean isBridge(Graph g, int from, int to) {
         g.removeEdge(from, to);
         super.visited = new boolean[g.vertices.size()];

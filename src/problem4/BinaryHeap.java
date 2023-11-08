@@ -42,14 +42,12 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
     }
 
 
-    public AnyType deleteMin() {
+    public void deleteMin() {
         if (isEmpty()) {
             throw new BufferUnderflowException();
         }
-        AnyType min = findMin();
         array[1] = array[currentSize--];
         percolateDown(1);
-        return min;
     }
 
 
@@ -60,6 +58,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         array[array.length - 1] = element;
         percolateUp(element);
     }
+
 
     private void enlargeArray(int newSize) {
         AnyType[] newArray = (AnyType[]) new Comparable[newSize];
@@ -78,9 +77,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
             if (child != currentSize && array[child + 1].compareTo(array[child]) < 0) {
                 child++;
             }
-            if (array[child].compareTo(tmp) < 0) { // comparing distance between 6 and 1, the distance is the same,
-                // so 6 stays in place,
-                // which should not be the case
+            if (array[child].compareTo(tmp) < 0) {
                 array[hole] = array[child];
             } else {
                 break;
