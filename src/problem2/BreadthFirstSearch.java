@@ -9,25 +9,17 @@ import java.util.List;
 public class BreadthFirstSearch {
 
     private final Graph.Vertex start;
-    private final boolean[] visited;
-    private final int[] edgeTo;
+    protected boolean[] visited;
+    protected final int[] edgeTo;
 
     public BreadthFirstSearch(Graph g, int start) {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        run(g);
+        bfs(this.start);
     }
 
-    public void run(Graph g) {
-        for (Graph .Vertex v : g.vertices) {
-            if (!visited[v.element]) {
-                bfs(v);
-            }
-        }
-    }
-
-    private void bfs(Graph.Vertex v) {
+    protected void bfs(Graph.Vertex v) {
         MyLinkedList<Graph.Vertex> q = new MyLinkedList<>();
         q.addLast(v);
         visited[v.element] = true;

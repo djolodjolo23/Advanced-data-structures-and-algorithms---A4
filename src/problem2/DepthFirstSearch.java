@@ -8,8 +8,8 @@ import java.util.List;
 public class DepthFirstSearch {
 
     private final Graph.Vertex start;
-    private final boolean[] visited;
-    private final int[] edgeTo;
+    protected boolean[] visited;
+    protected final int[] edgeTo;
 
 
 
@@ -17,19 +17,11 @@ public class DepthFirstSearch {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        run(g);
+        dfs(this.start);
     }
 
 
-    private void run(Graph g) {
-        for (Graph.Vertex v : g.vertices) {
-            if (!visited[v.element]) {
-                dfs(v);
-            }
-        }
-    }
-
-    private void dfs(Graph.Vertex v) {
+    protected void dfs(Graph.Vertex v) {
         visited[v.element] = true;
         for (Graph.Edge ew : v.al) {
             if (!visited[ew.targetVertex.element]) {
