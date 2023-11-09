@@ -40,6 +40,16 @@ public class ComponentFinder extends DepthFirstSearch {
         return allComponents;
     }
 
+    public Vertex getMaxVertex(List<Vertex> connectedComponent) {
+        Vertex max = connectedComponent.get(0);
+        for (Vertex v : connectedComponent) {
+            if (v.element > max.element) {
+                max = v;
+            }
+        }
+        return max;
+    }
+
 
     /*
     Removing edges that are in both directions

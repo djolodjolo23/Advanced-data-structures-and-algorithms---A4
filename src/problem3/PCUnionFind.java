@@ -38,6 +38,14 @@ public class PCUnionFind{
         }
     }
 
+    public void initWithSpecificNums(int[] parent) {
+        this.parent = parent;
+        this.size = new int[parent.length];
+        for (int i = 0; i < parent.length; i++) {
+            this.size[i] = 1;
+        }
+    }
+
     public void init(int num) {
         this.parent = new int[num];
         this.size = new int[parent.length];

@@ -22,13 +22,13 @@ public class Main {
 
         BridgeFinder depthFirstSearch = new BridgeFinder(undirectedGraph, 0);
 
-        System.out.println("Is edge 0-1 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 0, 1));
-        System.out.println("Is edge 1-2 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 1, 2));
-        System.out.println("Is edge 2-0 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 2, 0));
-        System.out.println("Is edge 2-3 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 2, 3));
-        System.out.println("Is edge 3-4 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 3, 4));
-        System.out.println("Is edge 4-5 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 4, 5));
-        System.out.println("Is edge 5-3 a bridge? " + depthFirstSearch.isBridge(undirectedGraph, 5, 3));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 0, 1));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 1, 2));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 2, 0));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 2, 3));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 3, 4));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 4, 5));
+        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 5, 3));
 
     }
 }

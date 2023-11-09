@@ -7,6 +7,7 @@ import problem4.BinaryHeap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Kruskal {
 
@@ -20,19 +21,24 @@ public class Kruskal {
     }
 
 
-    private List<Edge> findMinSpanningTree(List<Edge> edges, int numVertices) {
+    private List<Edge> findMinSpanningTree(List<Vertex> connectedComponent, List<Edge> edges, int numVertices) {
         PCUnionFind ds = new PCUnionFind();
-        ds.init(numVertices);
+        Vertex max = componentFinder.getMaxVertex(connectedComponent);
+        int[] vertices = new int[max.element + 1];
+        // get the biggest vertex from connectedComponent, by element value
+        for (Vertex v : connectedComponent) {
+            vertices[v.element] = v.element;
+        }
+        ds.initWithSpecificNums(vertices);
+        //ds.init(numVertices);
         List<Edge> mst = new ArrayList<>();
         BinaryHeap<Edge> bh = new BinaryHeap<>(edges.toArray(new Edge[0]));
         while (mst.size() != numVertices - 1) {
             Edge e = bh.findMin();
             assert e != null;
-            int uSet = ds.findRoot(e.sourceVertex.element);
-            int vSet = ds.findRoot(e.targetVertex.element);
-            if (uSet != vSet) {
+            if (!Objects.equals(e.sourceVertex.element, e.targetVertex.element)) {
                 mst.add(e);
-                ds.makeUnion(uSet, vSet);
+                ds.makeUnion(e.sourceVertex.element, e.targetVertex.element);
             }
             bh.deleteMin();
         }
@@ -59,14 +65,14 @@ public class Kruskal {
             }
             int componentCount = 1;
             for (List<Vertex> connectedComponent : connectedComponents) {
-                System.out.println("Component " + componentCount++ + ": ");
+                System.out.println("Tree " + componentCount++ + ": ");
                 if (connectedComponent.size() == 1) {
                     System.out.println(connectedComponent.get(0).element);
                     System.out.println();
                     continue;
                 }
                 List<Edge> edges = getEdgesOfComponents(connectedComponent);
-                List<Edge> minSpanningTree = findMinSpanningTree(edges, connectedComponent.size());
+                List<Edge> minSpanningTree = findMinSpanningTree(connectedComponent, edges, connectedComponent.size());
                 for (Edge e : minSpanningTree) {
                     System.out.println(e.targetVertex.element + "--" + e.sourceVertex.element);
                 }
