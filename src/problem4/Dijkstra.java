@@ -10,17 +10,15 @@ public class Dijkstra {
 
     private final Vertex[] heapArray;
 
-    private HeapHelper heapHelper;
+    private final int start;
 
-    private int start;
-
-    private Graph g;
+    private final Graph g;
 
 
     public Dijkstra(Graph g, int start) {
         this.g = g;
         this.start = start;
-        this.heapHelper = new HeapHelper(g, start);
+        HeapHelper heapHelper = new HeapHelper(g);
         this.heapArray = heapHelper.createHeapArray(g.vertices, start);
         this.bh = new BinaryHeap<>(heapArray);
     }

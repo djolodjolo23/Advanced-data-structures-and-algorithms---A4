@@ -2,6 +2,11 @@ package problem1;
 
 import java.util.Objects;
 
+/**
+ * The Vertex class represents a vertex in a graph.
+ * It contains a list of edges that are adjacent to the vertex.
+ * It also contains fields that are used in Dijkstra's algorithm and topological sort.
+ */
 public class Vertex implements Comparable<Vertex> {
 
     public Integer element;

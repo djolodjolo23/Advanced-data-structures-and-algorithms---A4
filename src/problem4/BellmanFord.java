@@ -8,8 +8,8 @@ import java.util.List;
 
 public class BellmanFord {
 
-    private Graph g;
-    private int start;
+    private final Graph g;
+    private final int start;
 
     public BellmanFord(Graph g, int start) {
         this.g = g;

@@ -34,15 +34,11 @@ public class Main {
 
         DepthFirstSearch depthFirstSearch = new DepthFirstSearch(undirectedGraph, 0);
 
-        depthFirstSearch.dfs(depthFirstSearch.start);
-
         System.out.println(depthFirstSearch.hasPathTo(2));
 
         System.out.println(depthFirstSearch.pathTo(2));
 
         BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(undirectedGraph, 0);
-
-        breadthFirstSearch.bfs(breadthFirstSearch.start);
 
         System.out.println(breadthFirstSearch.hasPathTo(2));
 

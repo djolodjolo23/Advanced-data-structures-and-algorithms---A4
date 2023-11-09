@@ -25,7 +25,6 @@ public class IteratorEdges implements Iterator<VertexPair> {
     @Override
     public boolean hasNext() {
         while (edgeIterator != null && !edgeIterator.hasNext() && vertexIterator.hasNext()) {
-            // Move to the next vertex and its linked list of edges.
             Vertex vertex = vertexIterator.next();
             edgeIterator = vertex.al.iterator();
             currentVertexId++;

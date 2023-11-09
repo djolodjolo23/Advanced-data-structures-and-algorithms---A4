@@ -8,8 +8,6 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
 
     private AnyType[] array;
 
-    public boolean[] visited;
-
     public BinaryHeap() {
         this.currentSize = 0;
     }

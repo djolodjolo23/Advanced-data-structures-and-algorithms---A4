@@ -2,6 +2,10 @@ package problem1;
 
 import java.util.Objects;
 
+/**
+ * The Edge class represents an edge in a graph.
+ * It contains the source vertex, target vertex and weight of the edge.
+ */
 public class Edge implements Comparable<Edge>{
 
     public Vertex sourceVertex;

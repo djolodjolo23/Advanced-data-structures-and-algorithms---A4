@@ -10,8 +10,8 @@ import java.util.*;
 
 public class ComponentFinder extends DepthFirstSearch {
 
-    public ComponentFinder(Graph g, int start) {
-        super(g, start);
+    public ComponentFinder(Graph g) {
+        super(g);
     }
 
 

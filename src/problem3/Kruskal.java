@@ -11,12 +11,12 @@ import java.util.Objects;
 
 public class Kruskal {
 
-    private ComponentFinder componentFinder;
+    private final ComponentFinder componentFinder;
 
     List<List<Vertex>> connectedComponents;
 
     public Kruskal(Graph g) {
-        componentFinder = new ComponentFinder(g, 0);
+        componentFinder = new ComponentFinder(g);
         connectedComponents = componentFinder.findComponents(g);
     }
 
@@ -25,12 +25,10 @@ public class Kruskal {
         PCUnionFind ds = new PCUnionFind();
         Vertex max = componentFinder.getMaxVertex(connectedComponent);
         int[] vertices = new int[max.element + 1];
-        // get the biggest vertex from connectedComponent, by element value
         for (Vertex v : connectedComponent) {
             vertices[v.element] = v.element;
         }
         ds.initWithSpecificNums(vertices);
-        //ds.init(numVertices);
         List<Edge> mst = new ArrayList<>();
         BinaryHeap<Edge> bh = new BinaryHeap<>(edges.toArray(new Edge[0]));
         while (mst.size() != numVertices - 1) {

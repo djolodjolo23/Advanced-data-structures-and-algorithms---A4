@@ -14,15 +14,6 @@ public class Main {
 
         ug.addEdge(0, 1);
         ug.addEdge(0, 2);
-        //ug.addEdge(0, 3);
-
-        //ug.removeEdge(0, 1);
-
-
-
-
-       // I//teratorEdges<Graph.Edge> ie = new IteratorEdges<>(ug);
-
 
 
 
@@ -43,20 +34,21 @@ public class Main {
          */
 
 
-        IteratorEdges ie = new IteratorEdges(dg);
+
+        IteratorEdges ie = new IteratorEdges(ug);
         while (ie.hasNext()) {
             System.out.println(ie.next().toString());
         }
         System.out.println();
 
 
-        IteratorVertices iv = new IteratorVertices(dg);
+        IteratorVertices iv = new IteratorVertices(ug);
         while (iv.hasNext()) {
             System.out.println(iv.next().element.toString());
         }
         System.out.println();
 
-        IteratorAdjacency<Edge> iea = new IteratorAdjacency<>(dg.vertices.get(0).al);
+        IteratorAdjacency<Edge> iea = new IteratorAdjacency<>(ug.vertices.get(0).al);
 
         while (iea.hasNext()) {
             System.out.println(iea.next().targetVertex.element.toString());

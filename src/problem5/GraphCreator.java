@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GraphCreator {
 
-    private Map<String, Integer> courseIdToNumber;
+    private final Map<String, Integer> courseIdToNumber;
     private final DirectedGraph graph;
 
     public GraphCreator() {

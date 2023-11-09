@@ -28,7 +28,7 @@ public class Main {
 
         topologicalSort.topsort();
 
-        directedGraph.vertices.sort(Comparator.comparingInt(o -> o.topNum));
+        directedGraph.vertices.sort(Comparator.comparingInt(o -> o.topNum)); // sorted vertices by topNum
 
         System.out.println();
 

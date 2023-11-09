@@ -20,15 +20,15 @@ public class Main {
         undirectedGraph.addEdge(5,3);
 
 
-        BridgeFinder depthFirstSearch = new BridgeFinder(undirectedGraph, 0);
+        BridgeFinder bridgeFinder = new BridgeFinder();
 
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 0, 1));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 1, 2));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 2, 0));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 2, 3));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 3, 4));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 4, 5));
-        System.out.println(depthFirstSearch.isBridge(undirectedGraph, 5, 3));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 0, 1));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 1, 2));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 2, 0));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 2, 3));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 3, 4));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 4, 5));
+        System.out.println(bridgeFinder.isBridge(undirectedGraph, 5, 3));
 
     }
 }

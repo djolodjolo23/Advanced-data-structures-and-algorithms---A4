@@ -11,17 +11,34 @@ import java.util.Map;
 
 public class DepthFirstSearch {
 
-    protected final Vertex start;
-    protected boolean[] visited;
+    Vertex start;
+    public boolean[] visited;
 
-    protected int[] visitedAt;
+    public int[] visitedAt;
     protected final int[] edgeTo;
 
     private int visitedCounter = 0;
 
 
+    /**
+     * Starts the Depth-First Search right away.
+     * @param g Graph to search in.
+     * @param start Start vertex.
+     */
     public DepthFirstSearch(Graph g, int start) {
         this.start = g.vertices.get(start);
+        visited = new boolean[g.vertices.size()];
+        visitedAt = new int[g.vertices.size()];
+        edgeTo = new int[g.vertices.size()];
+        dfs(this.start);
+    }
+
+    /**
+     * Does not start the Depth-First Search right away, but can be started manually.
+     * @param g Graph to search in.
+     */
+    public DepthFirstSearch(Graph g) {
+        this.start = null;
         visited = new boolean[g.vertices.size()];
         visitedAt = new int[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
@@ -29,6 +46,9 @@ public class DepthFirstSearch {
 
 
     public void dfs(Vertex v) {
+        if (start == null) {
+            start = v;
+        }
         visited[v.element] = true;
         visitedAt[v.element] = ++visitedCounter;
         for (Edge ew : v.al) {

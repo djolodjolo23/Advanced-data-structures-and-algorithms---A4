@@ -5,6 +5,10 @@ import problem1.iterators.IteratorAdjacency;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * The MyLinkedList class is a custom implementation of a doubly linked list, already used in Assignment 2 (Deque problem).
+ * @param <AnyType> the type of the elements in the linked list, generics.
+ */
 public class MyLinkedList<AnyType> implements Iterable<AnyType>{
 
     @Override

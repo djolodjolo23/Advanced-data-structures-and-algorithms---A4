@@ -35,16 +35,16 @@ public class Main {
         dg.addWeightedEdge(6, 5, 1);
 
 
-        Dijkstra dijkstra = new Dijkstra(dg, 1);
+        Dijkstra dijkstra = new Dijkstra(dg, 0);
 
 
-        dijkstra.findShortestPath();
+        dijkstra.findShortestPath(); // prints table
 
         System.out.println();
 
-        BellmanFord bellmanFord = new BellmanFord(dg, 1);
+        BellmanFord bellmanFord = new BellmanFord(dg, 0);
 
-        bellmanFord.findShortestPath();
+        bellmanFord.findShortestPath(); // prints table
 
 
 

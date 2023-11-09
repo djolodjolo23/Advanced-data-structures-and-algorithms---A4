@@ -18,7 +18,6 @@ public class Main {
         undirectedGraph.addWeightedEdge(2, 0, 1);
         //undirectedGraph.addWeightedEdge(3, 4, 1);
         undirectedGraph.addWeightedEdge(4, 0, 2);
-        undirectedGraph.addWeightedEdge(25, 18, 2);
 
 
         Kruskal kruskal = new Kruskal(undirectedGraph);
