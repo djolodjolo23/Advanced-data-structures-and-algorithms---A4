@@ -1,6 +1,6 @@
 package problem1;
 
-import problem1.iterators.IteratorAdjacencyList;
+import problem1.iterators.IteratorAdjacency;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -9,7 +9,7 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType>{
 
     @Override
     public Iterator<AnyType> iterator() {
-        return new IteratorAdjacencyList<>(this);
+        return new IteratorAdjacency<>(this);
     }
 
     public static class Node<AnyType> {

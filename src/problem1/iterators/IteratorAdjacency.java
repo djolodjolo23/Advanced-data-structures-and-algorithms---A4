@@ -5,19 +5,19 @@ import problem1.MyLinkedList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class IteratorAdjacencyList<AnyType> implements Iterator<AnyType>{
+public class IteratorAdjacency<AnyType> implements Iterator<AnyType>{
 
-    private MyLinkedList<AnyType> linky;
+    private MyLinkedList<AnyType> adjacency;
     private MyLinkedList.Node<AnyType> currentNode;
 
-    public IteratorAdjacencyList(MyLinkedList<AnyType> myLinkedList) {
-        linky = myLinkedList;
-        this.currentNode = linky.head.next;
+    public IteratorAdjacency(MyLinkedList<AnyType> adjacency) {
+        this.adjacency = adjacency;
+        this.currentNode = this.adjacency.head.next;
     }
 
     @Override
     public boolean hasNext() {
-        return currentNode != linky.tail;
+        return currentNode != adjacency.tail;
     }
 
     @Override

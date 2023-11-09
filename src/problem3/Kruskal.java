@@ -59,9 +59,9 @@ public class Kruskal {
     public void createMinSpanningForest() {
         if (!connectedComponents.isEmpty()) {
             if (connectedComponents.size() == 1) {
-                System.out.println("Minimum Spanning tree");
+                System.out.println("Minimum Spanning Tree:");
             } else {
-                System.out.println("Minimum Spanning Forest");
+                System.out.println("Minimum Spanning Forest:");
             }
             int componentCount = 1;
             for (List<Vertex> connectedComponent : connectedComponents) {

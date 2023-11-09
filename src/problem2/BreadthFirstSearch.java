@@ -11,21 +11,27 @@ import java.util.List;
 
 public class BreadthFirstSearch {
 
-    private final Vertex start;
+    final Vertex start;
     protected boolean[] visited;
+
+    protected int[] visitedAt;
     protected final int[] edgeTo;
+
+    private int visitedCounter = 0;
+
 
     public BreadthFirstSearch(Graph g, int start) {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
+        visitedAt = new int[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
-        bfs(this.start);
     }
 
     protected void bfs(Vertex v) {
         MyLinkedList<Vertex> q = new MyLinkedList<>();
         q.addLast(v);
         visited[v.element] = true;
+        visitedAt[v.element] = ++visitedCounter;
         while (!q.isEmpty()) {
             Vertex vertex = q.removeAndReturnFirst();
             for (Edge ew : vertex.al) {

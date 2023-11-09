@@ -1,6 +1,8 @@
 package problem1;
 
+import problem1.iterators.IteratorAdjacency;
 import problem1.iterators.IteratorEdges;
+import problem1.iterators.IteratorVertices;
 
 public class Main {
 
@@ -21,7 +23,6 @@ public class Main {
 
        // I//teratorEdges<Graph.Edge> ie = new IteratorEdges<>(ug);
 
-        IteratorEdges ie;
 
 
 
@@ -41,24 +42,29 @@ public class Main {
 
          */
 
-        Vertex v1 = dg.vertices.get(0);
 
-        ie = new IteratorEdges(dg);
+        IteratorEdges ie = new IteratorEdges(dg);
         while (ie.hasNext()) {
             System.out.println(ie.next().toString());
         }
-
-
-        for (Edge e : v1.al) {
-            System.out.print(e.targetVertex.element + " ");
-        }
-
         System.out.println();
 
-        System.out.println("Edge count: " + dg.getEdgesCount());
+
+        IteratorVertices iv = new IteratorVertices(dg);
+        while (iv.hasNext()) {
+            System.out.println(iv.next().element.toString());
+        }
+        System.out.println();
+
+        IteratorAdjacency<Edge> iea = new IteratorAdjacency<>(dg.vertices.get(0).al);
+
+        while (iea.hasNext()) {
+            System.out.println(iea.next().targetVertex.element.toString());
+        }
+        System.out.println();
 
 
-        System.out.println("Vertex count: " + dg.getVertexCount());
+
 
 
 

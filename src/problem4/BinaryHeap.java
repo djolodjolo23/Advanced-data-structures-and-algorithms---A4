@@ -8,6 +8,8 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
 
     private AnyType[] array;
 
+    public boolean[] visited;
+
     public BinaryHeap() {
         this.currentSize = 0;
     }
@@ -37,8 +39,19 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         return array[1];
     }
 
+    public AnyType findMax() {
+        if (array == null || array.length == 0) {
+            return null;
+        }
+        return array[currentSize];
+    }
+
     private boolean isEmpty() {
         return currentSize == 0;
+    }
+
+    public int size() {
+        return currentSize;
     }
 
 
@@ -48,6 +61,10 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         }
         array[1] = array[currentSize--];
         percolateDown(1);
+    }
+
+    public AnyType[] getArray() {
+        return array;
     }
 
 
@@ -65,8 +82,6 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
-
-
 
 
     private void percolateDown(int hole) {

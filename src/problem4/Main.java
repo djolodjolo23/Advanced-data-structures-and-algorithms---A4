@@ -3,7 +3,6 @@ package problem4;
 import helpers.CSVExporter;
 import helpers.Timer;
 import problem1.DirectedGraph;
-import problem1.Graph;
 import problem1.Vertex;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Main {
 
         dg.addWeightedEdge(0, 1, 2);
         dg.addWeightedEdge(0, 3, 1);
-        dg.addWeightedEdge(1, 3, -3);
+        dg.addWeightedEdge(1, 3, 3);
         dg.addWeightedEdge(1, 4, 10);
         dg.addWeightedEdge(2, 0, 4);
         dg.addWeightedEdge(2, 5, 5);
@@ -35,26 +34,22 @@ public class Main {
         dg.addWeightedEdge(4, 6, 6);
         dg.addWeightedEdge(6, 5, 1);
 
-        List<Vertex> vertices = new ArrayList<>(dg.vertices);
+
+        Dijkstra dijkstra = new Dijkstra(dg, 1);
 
 
-        Vertex[] heapArray = HeapHelper.createHeapArray(vertices, 0);
-
-        Dijkstra dijkstra = new Dijkstra(new BinaryHeap<>(heapArray));
-
-
-        dijkstra.findShortestPath(dg, 0);
+        dijkstra.findShortestPath();
 
         System.out.println();
 
-        BellmanFord bellmanFord = new BellmanFord();
+        BellmanFord bellmanFord = new BellmanFord(dg, 1);
 
-        bellmanFord.findShortestPath(dg, 0);
-
-
+        bellmanFord.findShortestPath();
 
 
-        //DirectedGraph dg = new DirectedGraph(5);
+
+        /*
+        DirectedGraph dg = new DirectedGraph(5);
 
         Timer timer = new Timer();
 

@@ -42,6 +42,8 @@ public class Main {
 
         BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch(undirectedGraph, 0);
 
+        breadthFirstSearch.bfs(breadthFirstSearch.start);
+
         System.out.println(breadthFirstSearch.hasPathTo(2));
 
         System.out.println(breadthFirstSearch.pathTo(2));

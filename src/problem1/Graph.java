@@ -60,6 +60,17 @@ public abstract class Graph {
         return edges;
     }
 
+
+    public Vertex getMaxVertex(List<Vertex> vertices) {
+        Vertex max = vertices.get(0);
+        for (Vertex v : vertices) {
+            if (v.element > max.element) {
+                max = v;
+            }
+        }
+        return max;
+    }
+
     public abstract void addEdge(int v, int w);
 
     public abstract void addWeightedEdge(int v, int w, int weight);

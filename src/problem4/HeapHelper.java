@@ -1,42 +1,39 @@
 package problem4;
 
-import problem1.Edge;
 import problem1.Graph;
 import problem1.Vertex;
+import problem2.DepthFirstSearch;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 /*
  * The HeapHelper class is used to create a heap array from a list of vertices.
  */
-public class HeapHelper {
+public class HeapHelper extends DepthFirstSearch {
 
-    public static Vertex[] createHeapArray(List<Vertex> vertices, int startIndex) {
+
+    public HeapHelper(Graph g, int start) {
+        super(g, start);
+    }
+
+
+    public Vertex[] createHeapArray(List<Vertex> vertices, int startIndex) {
         List<Vertex> heapList = new ArrayList<>();
-        Set<Vertex> visited = new HashSet<>();
-
-        traverseVertex(vertices.get(startIndex), heapList, visited);
+        dfs(vertices.get(startIndex));
+        for (int i = 0; i < vertices.size(); i++) {
+            if (visitedAt[i] != 0) {
+                heapList.add(vertices.get(i));
+            }
+        }
+        heapList.sort((o1, o2) -> visitedAt[o1.element] - visitedAt[o2.element]);
         Vertex[] heapArray = new Vertex[heapList.size()];
         for (int i = 0; i < heapList.size(); i++) {
             heapArray[i] = heapList.get(i);
         }
-
         return heapArray;
     }
 
-    private static void traverseVertex(Vertex vertex, List<Vertex> heapList, Set<Vertex> visited) {
-        if (vertex != null && !visited.contains(vertex)) {
-            heapList.add(vertex);
-            visited.add(vertex);
-            for (Edge edge : vertex.al) {
-                traverseVertex(edge.targetVertex, heapList, visited);
-            }
-        }
-
-    }
 
 }

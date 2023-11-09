@@ -1,5 +1,6 @@
 package problem3;
 
+import helpers.Tuple;
 import problem1.Edge;
 import problem1.Graph;
 import problem1.Vertex;

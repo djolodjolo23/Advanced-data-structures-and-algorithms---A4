@@ -13,18 +13,24 @@ public class DepthFirstSearch {
 
     protected final Vertex start;
     protected boolean[] visited;
+
+    protected int[] visitedAt;
     protected final int[] edgeTo;
+
+    private int visitedCounter = 0;
 
 
     public DepthFirstSearch(Graph g, int start) {
         this.start = g.vertices.get(start);
         visited = new boolean[g.vertices.size()];
+        visitedAt = new int[g.vertices.size()];
         edgeTo = new int[g.vertices.size()];
     }
 
 
-    protected void dfs(Vertex v) {
+    public void dfs(Vertex v) {
         visited[v.element] = true;
+        visitedAt[v.element] = ++visitedCounter;
         for (Edge ew : v.al) {
             if (!visited[ew.targetVertex.element]) {
                 edgeTo[ew.targetVertex.element] = v.element;

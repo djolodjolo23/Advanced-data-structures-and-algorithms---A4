@@ -8,12 +8,20 @@ import java.util.List;
 
 public class BellmanFord {
 
+    private Graph g;
+    private int start;
 
-    public void findShortestPath(Graph g, int source) {
+    public BellmanFord(Graph g, int start) {
+        this.g = g;
+        this.start = start;
+    }
+
+
+    public void findShortestPath() {
         int numVertices = g.getVertexCount();
         int[] distance = new int[numVertices];
         Arrays.fill(distance, Integer.MAX_VALUE);
-        distance[source] = 0;
+        distance[start] = 0;
         List<Edge> edges = g.getAllEdges();
         for (int i = 1; i < numVertices - 1; i++) {
             for (Edge e : edges) {
@@ -34,7 +42,11 @@ public class BellmanFord {
             }
         }
         for (int i = 0; i < g.getVertexCount(); i++) {
-            System.out.println("Vertex: " + i + " Distance: " + distance[i]); // table
+            if (distance[i] != Integer.MAX_VALUE) {
+                System.out.println("Vertex: " + i + " Distance: " + distance[i]); // table
+            } else {
+                System.out.println("Vertex: " + i + " Distance: " + "Infinity"); // table
+            }
         }
     }
 }
