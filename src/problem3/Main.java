@@ -20,13 +20,9 @@ public class Main {
         undirectedGraph.addWeightedEdge(4, 0, 2);
 
 
-        Kruskal kruskal = new Kruskal();
+        Kruskal kruskal = new Kruskal(undirectedGraph);
 
-        ComponentFinder componentFinder = new ComponentFinder(undirectedGraph, 0);
-
-        List<List<Vertex>> connectedComponents =  componentFinder.findComponents(undirectedGraph);
-
-        kruskal.createMinSpanningForest(connectedComponents);
+        kruskal.createMinSpanningForest();
 
 
 

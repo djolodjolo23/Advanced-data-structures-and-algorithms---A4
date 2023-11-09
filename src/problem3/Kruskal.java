@@ -1,6 +1,7 @@
 package problem3;
 
 import problem1.Edge;
+import problem1.Graph;
 import problem1.Vertex;
 import problem4.BinaryHeap;
 
@@ -9,8 +10,17 @@ import java.util.List;
 
 public class Kruskal {
 
+    private ComponentFinder componentFinder;
 
-    public List<Edge> findMinSpanningTree(List<Edge> edges, int numVertices) {
+    List<List<Vertex>> connectedComponents;
+
+    public Kruskal(Graph g) {
+        componentFinder = new ComponentFinder(g, 0);
+        connectedComponents = componentFinder.findComponents(g);
+    }
+
+
+    private List<Edge> findMinSpanningTree(List<Edge> edges, int numVertices) {
         PCUnionFind ds = new PCUnionFind();
         ds.init(numVertices);
         List<Edge> mst = new ArrayList<>();
@@ -29,7 +39,7 @@ public class Kruskal {
         return mst;
     }
 
-    public List<Edge> getEdgesOfComponents(List<Vertex> vertices) {
+    private List<Edge> getEdgesOfComponents(List<Vertex> vertices) {
         List<Edge> allEdges = new ArrayList<>();
         for (Vertex v : vertices) {
             for (Edge e : v.al) {
@@ -40,22 +50,30 @@ public class Kruskal {
     }
 
 
-    public void createMinSpanningForest(List<List<Vertex>>connectedComponents) {
-        System.out.println("Minimum Spanning Forest: ");
-        int componentCount = 1;
-        for (List<Vertex> connectedComponent: connectedComponents) {
-            System.out.println("Component " + componentCount++ + ": ");
-            if (connectedComponent.size() == 1) {
-                System.out.println(connectedComponent.get(0).element);
+    public void createMinSpanningForest() {
+        if (!connectedComponents.isEmpty()) {
+            if (connectedComponents.size() == 1) {
+                System.out.println("Minimum Spanning tree");
+            } else {
+                System.out.println("Minimum Spanning Forest");
+            }
+            int componentCount = 1;
+            for (List<Vertex> connectedComponent : connectedComponents) {
+                System.out.println("Component " + componentCount++ + ": ");
+                if (connectedComponent.size() == 1) {
+                    System.out.println(connectedComponent.get(0).element);
+                    System.out.println();
+                    continue;
+                }
+                List<Edge> edges = getEdgesOfComponents(connectedComponent);
+                List<Edge> minSpanningTree = findMinSpanningTree(edges, connectedComponent.size());
+                for (Edge e : minSpanningTree) {
+                    System.out.println(e.targetVertex.element + "--" + e.sourceVertex.element);
+                }
                 System.out.println();
-                continue;
             }
-            List<Edge> edges = getEdgesOfComponents(connectedComponent);
-            List<Edge> minSpanningTree = findMinSpanningTree(edges, connectedComponent.size());
-            for (Edge e : minSpanningTree) {
-                System.out.println(e.targetVertex.element + "--" + e.sourceVertex.element);
-            }
-            System.out.println();
+        } else {
+            System.out.println("There are no components, cannot create a tree or a forest.");
         }
     }
 
