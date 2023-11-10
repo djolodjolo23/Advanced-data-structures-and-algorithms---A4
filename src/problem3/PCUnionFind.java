@@ -1,10 +1,16 @@
 package problem3;
 
+
+
 public class PCUnionFind{
     private int[] parent;
     private int[] size;
+
+
     public PCUnionFind() {
     }
+
+
     public int[] getParent() {
         return parent;
     }

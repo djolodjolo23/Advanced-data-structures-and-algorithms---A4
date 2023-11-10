@@ -43,9 +43,9 @@ public class BellmanFord {
         }
         for (int i = 0; i < g.getVertexCount(); i++) {
             if (distance[i] != Integer.MAX_VALUE) {
-                System.out.println("Vertex: " + i + " Distance: " + distance[i]); // table
+                System.out.println("Vertex: " + i + " Distance: " + distance[i]);
             } else {
-                System.out.println("Vertex: " + i + " Distance: " + "Infinity"); // table
+                System.out.println("Vertex: " + i + " Distance: " + "Infinity");
             }
         }
     }

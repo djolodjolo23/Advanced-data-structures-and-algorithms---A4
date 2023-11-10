@@ -18,9 +18,14 @@ public class GraphCreator {
 
     public GraphCreator() {
         courseIdToNumber = new HashMap<>();
-        graph = new DirectedGraph(0);
+        graph = new DirectedGraph(0); // empty graph initially
     }
 
+    /**
+     * Creates a graph from a text file.
+     * @param text the text file.
+     * @return the graph.
+     */
     public Graph createGraph(String text) {
         AtomicInteger courseNumber = new AtomicInteger();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(text))) {

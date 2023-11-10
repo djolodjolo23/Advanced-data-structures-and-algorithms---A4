@@ -21,6 +21,7 @@ public class Kruskal {
     }
 
 
+
     private List<Edge> findMinSpanningTree(List<Vertex> connectedComponent, List<Edge> edges, int numVertices) {
         PCUnionFind ds = new PCUnionFind();
         Vertex max = componentFinder.getMaxVertex(connectedComponent);
@@ -43,6 +44,7 @@ public class Kruskal {
         return mst;
     }
 
+
     private List<Edge> getEdgesOfComponents(List<Vertex> vertices) {
         List<Edge> allEdges = new ArrayList<>();
         for (Vertex v : vertices) {
@@ -54,6 +56,9 @@ public class Kruskal {
     }
 
 
+    /**
+     * Prints the minimum spanning tree or forest of the graph.
+     */
     public void createMinSpanningForest() {
         if (!connectedComponents.isEmpty()) {
             if (connectedComponents.size() == 1) {
