@@ -37,7 +37,6 @@ public class ComponentFinder extends DepthFirstSearch {
                 allComponents.add(components);
             }
         }
-        //removeDoubleEdges(allComponents);
         return allComponents;
     }
 
@@ -49,25 +48,5 @@ public class ComponentFinder extends DepthFirstSearch {
             }
         }
         return max;
-    }
-
-
-    /*
-    Removing edges that are in both directions
-     */
-    public void removeDoubleEdges(List<List<Vertex>> allComponents) {
-        List<Tuple> tuples = new ArrayList<>();
-        for (List<Vertex> component : allComponents) {
-            for (Vertex v : component) {
-                for (Edge e : v.al) {
-                    Tuple t = new Tuple(e.sourceVertex.element, e.targetVertex.element);
-                    if (!tuples.contains(t)) {
-                        tuples.add(t);
-                    } else {
-                        v.al.remove(e);
-                    }
-                }
-            }
-        }
     }
 }

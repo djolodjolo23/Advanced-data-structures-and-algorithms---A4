@@ -45,12 +45,9 @@ public class Kruskal {
     private List<Edge> getEdgesOfComponents(List<Vertex> vertices) {
         Set<String> uniqueEdgeStrings = new HashSet<>();
         List<Edge> uniqueEdges = new ArrayList<>();
-
         for (Vertex v : vertices) {
             for (Edge e : v.al) {
-
                 String edgeString = getSortedEdgeString(e.sourceVertex.element, e.targetVertex.element);
-
                 if (!uniqueEdgeStrings.contains(edgeString)) {
                     uniqueEdgeStrings.add(edgeString);
                     uniqueEdges.add(e);
