@@ -37,7 +37,7 @@ public class ComponentFinder extends DepthFirstSearch {
                 allComponents.add(components);
             }
         }
-        removeDoubleEdges(allComponents);
+        //removeDoubleEdges(allComponents);
         return allComponents;
     }
 

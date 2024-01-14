@@ -5,9 +5,7 @@ import problem1.Graph;
 import problem1.Vertex;
 import problem4.BinaryHeap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Kruskal {
 
@@ -35,7 +33,7 @@ public class Kruskal {
         while (mst.size() != numVertices - 1) {
             Edge e = bh.findMin();
             assert e != null;
-            if (!Objects.equals(e.sourceVertex.element, e.targetVertex.element)) {
+            if (ds.findRoot(e.sourceVertex.element) != ds.findRoot(e.targetVertex.element)) {
                 mst.add(e);
                 ds.makeUnion(e.sourceVertex.element, e.targetVertex.element);
             }
@@ -44,17 +42,28 @@ public class Kruskal {
         return mst;
     }
 
-
     private List<Edge> getEdgesOfComponents(List<Vertex> vertices) {
-        List<Edge> allEdges = new ArrayList<>();
+        Set<String> uniqueEdgeStrings = new HashSet<>();
+        List<Edge> uniqueEdges = new ArrayList<>();
+
         for (Vertex v : vertices) {
             for (Edge e : v.al) {
-                allEdges.addLast(e);
+
+                String edgeString = getSortedEdgeString(e.sourceVertex.element, e.targetVertex.element);
+
+                if (!uniqueEdgeStrings.contains(edgeString)) {
+                    uniqueEdgeStrings.add(edgeString);
+                    uniqueEdges.add(e);
+                }
             }
         }
-        return allEdges;
+
+        return uniqueEdges;
     }
 
+    private String getSortedEdgeString(int vertex1, int vertex2) {
+        return vertex1 < vertex2 ? vertex1 + "-" + vertex2 : vertex2 + "-" + vertex1;
+    }
 
     /**
      * Prints the minimum spanning tree or forest of the graph.
@@ -85,5 +94,6 @@ public class Kruskal {
             System.out.println("There are no components, cannot create a tree or a forest.");
         }
     }
+
 
 }
